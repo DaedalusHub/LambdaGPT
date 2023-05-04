@@ -1,23 +1,29 @@
-To deploy into AWS, clone the LambdaGPT repo:
+# LambdaGPT - A Serverless GPT Implementation on AWS #
+
+LambdaGPT is a serverless implementation of OpenAI's ChatGPT models using AWS Lambda and API Gateway. This project allows you to deploy and run the GPT model on AWS easily, either using an automated script or manual deployment.
+
+## Quick Deployment ##
+
+1. Clone the LambdaGPT repository:
 
 ```
 git clone git@github.com:DaedalusHub/LambdaGPT.git
 ```
 
-For automated install, use the `install.sh` helper script from the LambdaGPT directory:
+2. Deploy the `install.sh` helper script:
 
 ```
 cd LambdaGPT/
-sh .install.sh
+sh install.sh
 ```
 
-When the script completes successfully, you can test the API with the curl command below:
+3. Test the API using the curl command:
 
 ```
 curl -X POST \
   -H "Content-Type: application/json" \
   -d '{
-    "model": "gpt-3.5",
+    "model": "gpt-3.5-turbo",
     "messages": [
       {
         "role": "user",
@@ -28,16 +34,18 @@ curl -X POST \
 "<API_GATEWAY_INVOKE_URL>"
 ```
 
-To deploy manually, make sure to have the following files in your working directory before running Terraform, :
+## Manual Deployment ##
 
-1. openai_python_layer.zip - The zip file containing the openai library as a Lambda Layer.
-2. openai_get_api_key.zip - The zip file containing the Python script for the openai_get_api_key Lambda function.
-3. lambdagpt_invoke_api.zip - The zip file containing the lambda_function.py script above for the lambdagpt_invoke_api Lambda function.
+Ensure the following files are in your working directory before running Terraform:
 
-To deploy the resources, follow these steps:
+1. `openai_python_layer.zip` - A zip file containing the OpenAI library as a Lambda Layer.
+2. `openai_get_api_key.zip` - A zip file containing the Python script for the `openai_get_api_key` Lambda function.
+3. `lambdagpt_invoke_api.zip` - A zip file containing the Python script for the `lambdagpt_invoke_api` Lambda function.
 
-1. Run terraform init to initialize the Terraform working directory.
-2. Run terraform apply to create the resources defined in main.tf. Confirm the changes by typing yes when prompted.
-3. After the resources are created, the API Gateway URL will be displayed as an output. You can use this URL to make API calls to the lambdagpt_invoke_api Lambda function.
+## Deployment Steps ##
 
-Please note that you'll need to replace <OPENAI_API_KEY> in terraform.tfvars with your actual OpenAI API key, and the ARN in the get_api_key function should be replaced with the actual ARN of the openai_get_api_key Lambda function in your AWS account. Other variables should be set in tfvars depending on user settings.
+1. Run `terraform init` to initialize the Terraform working directory.
+2. Run `terraform apply` to create the resources defined in main.tf. Confirm the changes by typing yes when prompted.
+3. After the resources are created, the API Gateway URL will be displayed as an output. Use this URL to make API calls to the `lambdagpt_invoke_api` Lambda function.
+
+**Note:** Replace `<OPENAI_API_KEY>` in `terraform.tfvars` with your actual OpenAI API key. Replace the ARN in the `get_api_key` function with the actual ARN of the `openai_get_api_key` Lambda function in your AWS account. Set other variables in `tfvars` depending on your settings.
