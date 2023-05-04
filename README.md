@@ -18,4 +18,4 @@ To deploy the resources, follow these steps:
 2. Run terraform apply to create the resources defined in main.tf. Confirm the changes by typing yes when prompted.
 3. After the resources are created, the API Gateway URL will be displayed as an output. You can use this URL to make API calls to the lambdagpt_invoke_api Lambda function.
 
-Please note that you'll need to replace <your_openai_api_key_here> in terraform.tfvars with your actual OpenAI API key, and the ARN in the get_api_key function should be replaced with the actual ARN of the openai_get_api_key Lambda function in your AWS account. Other variables should be set in tfvars depending on user settings.
+Please note that you'll need to replace <OPENAI_API_KEY> in terraform.tfvars with your actual OpenAI API key, and the ARN in the get_api_key function should be replaced with the actual ARN of the openai_get_api_key Lambda function in your AWS account. Other variables should be set in tfvars depending on user settings.
