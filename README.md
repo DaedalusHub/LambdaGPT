@@ -6,6 +6,23 @@ For an automated install, use the helper script supplied using the following com
 
 `sh .install.sh`
 
+If the script completes successfully, you can test the API with the curl command below:
+
+```
+curl -X POST \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "gpt-3.5",
+    "messages": [
+      {
+        "role": "user",
+        "content": "How are you?"
+      }
+    ]
+}' \
+"<API_GATEWAY_INVOKE_URL>"
+```
+
 To deploy manually, make sure to have the following files in your working directory before running Terraform, :
 
 1. openai_python_layer.zip - The zip file containing the openai library as a Lambda Layer.
