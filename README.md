@@ -2,9 +2,12 @@ To set up in AWS, first clone the repo:
 
 `git clone git@github.com:DaedalusHub/LambdaGPT.git`
 
-For an automated install, use the helper script supplied using the following command:
+For automated install, use the `install.sh` helper script from the LambdaGPT directory:
 
-`sh .install.sh`
+```
+cd LambdaGPT/
+sh .install.sh
+```
 
 If the script completes successfully, you can test the API with the curl command below:
 
