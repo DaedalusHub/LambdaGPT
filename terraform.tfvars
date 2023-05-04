@@ -1,0 +1,6 @@
+openai_api_key = "<your_openai_api_key_here>"
+region = "us-west-2"
+stage = "prod"
+aws_config_path = "/home/brianhammons/.aws/config"
+aws_credentials_path = "/home/brianhammons/.aws/credentials"
+aws_profile = "daedalus"
