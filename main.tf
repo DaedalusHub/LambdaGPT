@@ -77,7 +77,8 @@ resource "aws_lambda_function" "lambdagpt_invoke_api" {
   handler       = "invoke_api.lambda_handler"
   runtime       = "python3.9"
   role          = aws_iam_role.lambda_role.arn
-  timeout       = 60
+  timeout       = 300
+  memory_size   = 3000
 
   filename = "lambdagpt_invoke_api.zip"
 
